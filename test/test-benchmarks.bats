@@ -1,8 +1,9 @@
 #!/usr/bin/env bats
-TEST_BREW_PREFIX="$(brew --prefix)"
-load "${TEST_BREW_PREFIX}/lib/bats-support/load.bash"
-load "${TEST_BREW_PREFIX}/lib/bats-assert/load.bash"
-
+# TEST_BREW_PREFIX="$(brew --prefix)"
+# load "${TEST_BREW_PREFIX}/lib/bats-support/load.bash"
+# load "${TEST_BREW_PREFIX}/lib/bats-assert/load.bash"
+load '/usr/local/lib/node_modules/bats-support/load.bash'
+load '/usr/local/lib/node_modules/bats-assert/load.bash'
 
 flunk() {
   { if [ "$#" -eq 0 ]; then cat -
