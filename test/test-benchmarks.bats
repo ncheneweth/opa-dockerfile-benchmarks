@@ -1,62 +1,7 @@
 #!/usr/bin/env bats
-# TEST_BREW_PREFIX="$(brew --prefix)"
-# load "${TEST_BREW_PREFIX}/lib/bats-support/load.bash"
-# load "${TEST_BREW_PREFIX}/lib/bats-assert/load.bash"
-load '/usr/local/lib/node_modules/bats-support/load.bash'
-load '/usr/local/lib/node_modules/bats-assert/load.bash'
-
-flunk() {
-  { if [ "$#" -eq 0 ]; then cat -
-    else echo "$@"
-    fi
-  } | sed "s:${BATS_TMPDIR}:\${BATS_TMPDIR}:g" >&2
-  return 1
-}
-
-refute_equal() {
-  if [ "$1" = "$2" ]; then
-    flunk "unexpectedly equal: $1"
-  fi
-}
-
-assert_not_equal() {
-  refute_equal "$@"
-}
-
-assert_starts_with() {
-  if [ "$1" = "${1#${2}}" ]; then
-    { echo "expected: $1"
-      echo "to start with: $2"
-    } | flunk
-  fi
-}
-
-assert_output_contains() {
-  local expected
-  if [ $# -eq 0 ]; then expected="$(cat -)"
-  else expected="$1"
-  fi
-  assert_contains "$output" "$expected"
-}
-
-refute_contains() {
-  local haystack="$1"
-  local needle="$2"
-  ! assert_contains "$haystack" "$needle" || {
-    { echo "expected:       $haystack"
-      echo "not to contain: $needle"
-    } | flunk
-  }
-}
-
-refute_output_contains() {
-  local expected
-  if [ $# -eq 0 ]; then expected="$(cat -)"
-  else expected="$1"
-  fi
-  refute_contains "$output" "$expected"
- 
-
+TEST_BREW_PREFIX="$(brew --prefix)"
+load "${TEST_BREW_PREFIX}/lib/bats-support/load.bash"
+load "${TEST_BREW_PREFIX}/lib/bats-assert/load.bash"
 
 @test "test well-formulated, level 2, quality practices image" {
   run bash -c "conftest test -i Dockerfile Dockerfile.level2 --data .opacisrc.level2 -p ../policy"
