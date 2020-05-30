@@ -1,7 +1,13 @@
 version: 2.1
 
+workflows:
+  version: 2
+  validate-opa-dockerfile-benchmark:
+    jobs:
+      - perform-test
+
 jobs:
-  build:
+  perform-test:
     docker:
       - image: circleci/node
     steps:
