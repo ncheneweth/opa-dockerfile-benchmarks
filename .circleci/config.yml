@@ -1,0 +1,18 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - setup-remote-docker
+      - run:
+          name:
+          command: |
+            npm install bats
+            npm install https://github.com/ztombol/bats-support
+            npm install https://github.com/ztombol/bats-assert
+            wget https://github.com/instrumenta/conftest/releases/download/v0.17.1/conftest_0.17.1_Linux_x86_64.tar.gz
+            tar xzf conftest_0.17.1_Linux_x86_64.tar.gz
+            sudo mv conftest /usr/local/bin

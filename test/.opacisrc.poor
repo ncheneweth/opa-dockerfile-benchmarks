@@ -1,0 +1,14 @@
+cispolicyconfig:
+  level_2_benchmark: true
+  run_as_user_required: true
+  approved_base_image_not_required: false
+  approved_base_images:
+    - buster
+  images_not_treated_as_immutable: true
+  only_necessary_packages_allowed: false
+  healthcheck_required: true
+  dockerfile_scanned_for_secrets: false
+  packages_verified: false
+setuid:
+  setuid_or_setgid_values_allow_escalation: "-rwsr-xr-x    1 root     root        128752 Apr 29 12:55 /usr/bin/sudo"
+  docker_content_trust: false
