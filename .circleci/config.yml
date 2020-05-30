@@ -24,4 +24,6 @@ jobs:
           name: run tests
           working_directory: test
           command: |
+            ls -la
+            ls -la test
             bats test-benchmark.bats
