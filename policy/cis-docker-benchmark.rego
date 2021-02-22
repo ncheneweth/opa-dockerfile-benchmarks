@@ -90,6 +90,7 @@ healthcheck_defined {
 deny[msg] {
   package_update_or_upgrade_instructions
   msg = "4.7 Ensure update/upgrade instructions are not used in the Dockerfile (Not Scored) level 1"
+  trace("4.7 trace message")
 }
 
 package_update_or_upgrade_instructions {

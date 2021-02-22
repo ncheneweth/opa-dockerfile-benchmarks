@@ -21,7 +21,7 @@ load "${TEST_BREW_PREFIX}/lib/bats-assert/load.bash"
   run bash -c "conftest test Dockerfile --data .opacisrc.l2flag -p ../policy"
   assert_output_contains "4.8 Ensure setuid and setgid permissions are removed in the images (Not Scored) level 2"
   assert_output_contains "4.5 Ensure Content trust for Docker is Enabled (Scored) level 2"
-  assert_output_contains "FAIL"
+  assert_output_contains "FAIL" 
   assert_output_contains "WARN"
   refute_output_contains "PASS"
 }
